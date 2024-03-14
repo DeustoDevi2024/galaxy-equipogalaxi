@@ -53,14 +53,6 @@ public class Camara : MonoBehaviour
 
     private void checkRotate()
     {
-        if (Input.GetKey(KeyCode.Z))
-        {
-            this.transform.rotation *= Quaternion.Euler(rotationX, -rotationY, rotationZ);
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            this.transform.rotation *= Quaternion.Euler(rotationX, rotationY, rotationZ);
-        }
-        
+        this.transform.LookAt(Vector3.zero);
     }
 }
