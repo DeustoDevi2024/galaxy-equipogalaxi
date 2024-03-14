@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
-    private GameObject[] gameObjectsD;
-    private GameObject[] gameObjectsI;
-    private int rotationX = 0;
-    public int rotationY = 1;
-    private int rotationZ = 0;
+    [SerializeField]
+    private int rotationY = 1;
+    [SerializeField]
+    private GameObject parent;
+    [SerializeField]
+    private float speed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameObjectsD = GameObject.FindGameObjectsWithTag("Planeta1");
-        gameObjectsI = GameObject.FindGameObjectsWithTag("Planeta2");
     }
 
     // Update is called once per frame
@@ -24,13 +24,10 @@ public class Planet : MonoBehaviour
 
     private void checkRotate()
     {
-        for (GameObject planetaD : gameObjectsD)
+        gameObject.transform.rotation *= Quaternion.Euler(0, rotationY * Time.deltaTime, 0);
+        if(parent!=null)
         {
-                planetaD.transform.rotation *= Quaternion.Euler(rotationX, rotationY, rotationZ);
-        }
-        for (GameObject planetaI : gameObjectsI)
-        {
-                planetaI.transform.rotation *= Quaternion.Euler(rotationX, (-1) * rotationY, rotationZ);
+        gameObject.transform.RotateAround(parent.transform.position, Vector3.up, speed * Time.deltaTime);
         }
         
     }

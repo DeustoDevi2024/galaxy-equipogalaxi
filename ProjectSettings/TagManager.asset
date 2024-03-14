@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Planeta1
+  - Planeta2
   layers:
   - Default
   - TransparentFX
